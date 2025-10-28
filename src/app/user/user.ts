@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './user.css'
 })
 export class User {
-
+  name = input<string>();
+  avatar = input<string>();
+  imagePath = computed(() => `assets/users/${this.avatar()}`);
+  onSelectUser() {
+    console.info('On seleceted user clicked');
+  }
 }
