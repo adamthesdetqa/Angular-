@@ -12,6 +12,9 @@ export class User {
   imagePath = computed(() => `assets/users/${this.user().avatar}`);
   selectedUserId = output<string>();
 
+  /**
+   * Handles user click event and emits the selected user's ID
+   */
   onClickUser() {
     this.selectedUserId.emit(this.user().id);
   }
