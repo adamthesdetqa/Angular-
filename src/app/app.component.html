@@ -2,9 +2,9 @@
 <main>
   <ul id="users">
     <li>
-      <app-user [name]="users[0].name" [avatar]="users[0].avatar"/>
-      <app-user [name]="users[1].name" [avatar]="users[1].avatar"/>
-      <app-user [name]="users[2].name" [avatar]="users[2].avatar"/>
+      <app-user [user]="users[0]" (selectedUserId)="onSelectedUser($event)"  />
+      <app-user [user]="users[1]" (selectedUserId)="onSelectedUser($event)"  />
     </li>
   </ul>
+  <app-tasks [curSelectedUser]="getSelectedUser" />
 </main>
