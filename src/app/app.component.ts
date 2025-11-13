@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { USER } from '../types';
 import { Header } from './header/header';
 import { Tasks } from './tasks/tasks';
@@ -16,17 +16,20 @@ import { User } from './user/user';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+/**
+ * Root component of the application that manages user selection and task display
+ */
 export class AppComponent {
-  // properties
+  /** Array of all available users */
   users: USER[] = DUMMY_USERS;
-  selectedUserId: string = 'u1';
-
-  // this function is called when the output signal is changed from the click event on the user component
+  /** ID of the currently selected user */
+  selectedUserId = signal('u1');
+  selectedUser = computed(() => this.users.find((user) => user.id === this.selectedUserId()));
+  /**
+   * Handles user selection event and updates the currently selected user ID
+   * @param id - The ID of the selected user
+   */
   onSelectedUser(id: string) {
-    this.selectedUserId = id;
-  }
-  // get the selected user object and returns undefined if one is not found
-  get getSelectedUser(): USER | undefined {
-    return this.users.find((user) => user.id === this.selectedUserId);
+    this.selectedUserId.set(id);
   }
 }

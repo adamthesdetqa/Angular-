@@ -6,5 +6,5 @@
       <app-user [user]="users[1]" (selectedUserId)="onSelectedUser($event)"  />
     </li>
   </ul>
-  <app-tasks [curSelectedUser]="getSelectedUser" />
+  <app-tasks [curSelectedUser]="selectedUser()" />
 </main>
