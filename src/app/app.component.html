@@ -1,10 +1,9 @@
 <app-header />
 <main>
   <ul id="users">
-    <li>
-      <app-user [user]="users[0]" (selectedUserId)="onSelectedUser($event)"  />
-      <app-user [user]="users[1]" (selectedUserId)="onSelectedUser($event)"  />
-    </li>
+    @for(user of users ; track user.id){
+      <app-user [user]="user" (selectedUserId)="onSelectedUser($event)"  />
+  }
   </ul>
   <app-tasks [curSelectedUser]="selectedUser()" />
 </main>

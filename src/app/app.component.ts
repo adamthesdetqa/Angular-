@@ -20,10 +20,9 @@ import { User } from './user/user';
  * Root component of the application that manages user selection and task display
  */
 export class AppComponent {
-  /** Array of all available users */
-  users: USER[] = DUMMY_USERS;
-  /** ID of the currently selected user */
-  selectedUserId = signal('u1');
+  users: USER[] = DUMMY_USERS; /** Array of all available users */
+  selectedUserId = signal<string>('u1'); /** ID of the currently selected user */
+
   selectedUser = computed(() => this.users.find((user) => user.id === this.selectedUserId()));
   /**
    * Handles user selection event and updates the currently selected user ID
